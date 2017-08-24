@@ -81,10 +81,19 @@ let handlers = {
     editTodo:function(){
         let todoPosition = document.querySelector(".todoPosition");
         let todotext = document.querySelector(".todoText");
-        todoList.changeTodo(todoPosition.value,todotext.value)
+        todoList.changeTodo(todoPosition.valueAsNumber,todotext.value)
         todoPosition.value = "";
         todotext.value = ""
         
+    },
+    removeTodo:function(){
+        let removePosition = document.querySelector(".removePosition");
+        todoList.removeTodo(removePosition.valueAsNumber);
+        removePosition.value = ""
+    },
+    toggleCompleted:function(){
+        let togglePosition = document.querySelector(".togglePosition");
+        todoList.toggleCompleted(togglePosition.valueAsNumber)
     }
 }
 
