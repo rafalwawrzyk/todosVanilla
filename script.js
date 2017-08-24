@@ -25,8 +25,8 @@ let todoList = {
         this.displayTodos();
     },
     changeTodo: function (position, newTodoText) {
-        debugger;
         this.todos[position].todoText = newTodoText;
+        todoList.displayTodos();
 
     },
     toggleCompleted: function (position) {
@@ -65,18 +65,26 @@ let todoList = {
 
 
 let handlers = {
-    displayTodos: function(){
+    displayTodos: function () {
         todoList.displayTodos()
     },
-    toggleAll: function(){
+    toggleAll: function () {
         todoList.toggleAll();
     },
-    addTodo:function(){
-       let addInput = document.querySelector(".addInput");
-        if(addInput.value != ""){
+    addTodo: function () {
+        let addInput = document.querySelector(".addInput");
+        if (addInput.value != "") {
             todoList.addTodo(addInput.value);
-            addInput.value = ""
+            addInput.value = "";
         }
+    },
+    editTodo:function(){
+        let todoPosition = document.querySelector(".todoPosition");
+        let todotext = document.querySelector(".todoText");
+        todoList.changeTodo(todoPosition.value,todotext.value)
+        todoPosition.value = "";
+        todotext.value = ""
+        
     }
 }
 
@@ -91,6 +99,3 @@ let handlers = {
 //        }
 //    })
 //}
-
-
-
