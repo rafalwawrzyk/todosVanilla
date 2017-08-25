@@ -115,28 +115,40 @@ let view = {
         list.innerHTML = '';
         let itemsIdCounter = 0;
 
-
-        for (let i = 0; i < todoList.todos.length; i++) {
-            let listItems = document.createElement("li");
-            let todo = todoList.todos[i];
-
-
-
-            if (todo.completed == true) {
+        todoList.todos.forEach(function(todo,counter){
+            let listItems = document.createElement('li');
+               if (todo.completed == true) {
                 listItems.textContent = todo.todoText + " (x)";
                 list.appendChild(listItems);
             } else {
                 listItems.textContent = todo.todoText + " ( )";
                 list.appendChild(listItems);
             }
-            listItems.id = i;
-            listItems.appendChild(this.createRemoveBtn())
+            listItems.id = counter
+            listItems.appendChild(this.createRemoveBtn());
+        },this)
 
-
-
-
-
-        };
+//        for (let i = 0; i < todoList.todos.length; i++) {
+//            let listItems = document.createElement("li");
+//            let todo = todoList.todos[i];
+//
+//
+//
+//            if (todo.completed == true) {
+//                listItems.textContent = todo.todoText + " (x)";
+//                list.appendChild(listItems);
+//            } else {
+//                listItems.textContent = todo.todoText + " ( )";
+//                list.appendChild(listItems);
+//            }
+//            listItems.id = i;
+//            listItems.appendChild(this.createRemoveBtn())
+//
+//
+//
+//
+//
+//        };
     },
     createRemoveBtn: function () {
         let deleteBtn = document.createElement("button");
