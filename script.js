@@ -34,22 +34,41 @@ let todoList = {
         let completedTodos = 0;
 
         // Get number of completed todos
-        for (let i = 0; i < totalTodos; i++) {
-            if (this.todos[i].completed == true) {
+//        for (let i = 0; i < totalTodos; i++) {
+//            if (this.todos[i].completed == true) {
+//                completedTodos++;
+//            }
+//        }
+        
+        this.todos.forEach(function(todo){
+            if(todo.completed == true ){
                 completedTodos++;
             }
-        }
+        })
 
         // Case 1: if everything true turn it to false
-        if (completedTodos === totalTodos) {
-            for (let i = 0; i < totalTodos; i++) {
-                this.todos[i].completed = false;
+//        if (completedTodos === totalTodos) {
+////            for (let i = 0; i < totalTodos; i++) {
+////                this.todos[i].completed = false;
+////            }
+//            this.todos.forEach(function(todo){
+//                todo.completed = false;
+//            })
+//        } else {
+////            for (let i = 0; i < totalTodos; i++) {
+////                this.todos[i].completed = true;
+////            }
+//            this.todos.forEach(function(todo){
+//                todo.completed = true;
+//            })
+//        }
+        this.todos.forEach(function(todo){
+            if(completedTodos === totalTodos){
+                todo.completed = false
+            }else{
+                todo.completed = true
             }
-        } else {
-            for (let i = 0; i < totalTodos; i++) {
-                this.todos[i].completed = true;
-            }
-        }
+        })
     },
     removeTodo: function (position) {
         this.todos.splice(position, 1);
