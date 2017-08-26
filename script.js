@@ -1,21 +1,5 @@
 let todoList = {
     todos: [],
-    //    displayTodos: function () {
-    //        if (this.todos.length === 0) {
-    //            console.log("todos is empty");
-    //        } else {
-    //            console.log(`My Todos:`)
-    //            for (let i = 0; i < this.todos.length; i++) {
-    //                if (this.todos[i].completed == true) {
-    //                    console.log(`(x), ${this.todos[i].todoText}`);
-    //                } else {
-    //                    console.log(`( ) , ${this.todos[i].todoText}`);
-    //                }
-    //
-    //            }
-    //        }
-    //
-    //    },
     addTodo: function (todoText, complete) {
         this.todos.unshift({
             todoText: todoText,
@@ -34,38 +18,17 @@ let todoList = {
         let completedTodos = 0;
 
         // Get number of completed todos
-//        for (let i = 0; i < totalTodos; i++) {
-//            if (this.todos[i].completed == true) {
-//                completedTodos++;
-//            }
-//        }
-        
-        this.todos.forEach(function(todo){
-            if(todo.completed == true ){
+        this.todos.forEach(function (todo) {
+            if (todo.completed == true) {
                 completedTodos++;
             }
         })
 
         // Case 1: if everything true turn it to false
-//        if (completedTodos === totalTodos) {
-////            for (let i = 0; i < totalTodos; i++) {
-////                this.todos[i].completed = false;
-////            }
-//            this.todos.forEach(function(todo){
-//                todo.completed = false;
-//            })
-//        } else {
-////            for (let i = 0; i < totalTodos; i++) {
-////                this.todos[i].completed = true;
-////            }
-//            this.todos.forEach(function(todo){
-//                todo.completed = true;
-//            })
-//        }
-        this.todos.forEach(function(todo){
-            if(completedTodos === totalTodos){
+        this.todos.forEach(function (todo) {
+            if (completedTodos === totalTodos) {
                 todo.completed = false
-            }else{
+            } else {
                 todo.completed = true
             }
         })
@@ -115,9 +78,9 @@ let view = {
         list.innerHTML = '';
         let itemsIdCounter = 0;
 
-        todoList.todos.forEach(function(todo,counter){
+        todoList.todos.forEach(function (todo, counter) {
             let listItems = document.createElement('li');
-               if (todo.completed == true) {
+            if (todo.completed == true) {
                 listItems.textContent = todo.todoText + " (x)";
                 list.appendChild(listItems);
             } else {
@@ -126,37 +89,13 @@ let view = {
             }
             listItems.id = counter
             listItems.appendChild(this.createRemoveBtn());
-        },this)
-
-//        for (let i = 0; i < todoList.todos.length; i++) {
-//            let listItems = document.createElement("li");
-//            let todo = todoList.todos[i];
-//
-//
-//
-//            if (todo.completed == true) {
-//                listItems.textContent = todo.todoText + " (x)";
-//                list.appendChild(listItems);
-//            } else {
-//                listItems.textContent = todo.todoText + " ( )";
-//                list.appendChild(listItems);
-//            }
-//            listItems.id = i;
-//            listItems.appendChild(this.createRemoveBtn())
-//
-//
-//
-//
-//
-//        };
+        }, this)
     },
     createRemoveBtn: function () {
         let deleteBtn = document.createElement("button");
         deleteBtn.textContent = "Remove";
         deleteBtn.className = 'deleteBtn';
         return deleteBtn;
-
-
     },
     removeListenerSetUp: function () {
         let list = document.querySelector("ul");
