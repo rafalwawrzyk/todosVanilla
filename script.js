@@ -45,31 +45,45 @@ let handlers = {
         view.displayTodos();
     },
     addTodo: function () {
+        let addBtn = document.querySelector(".addTodo");
         let addInput = document.querySelector(".addInput");
-        if (addInput.value != "") {
-            todoList.addTodo(addInput.value);
-            addInput.value = "";
-        };
-        view.displayTodos()
+
+        function checkEmpty() {
+            if (addInput.value != "") {
+                todoList.addTodo(addInput.value);
+                addInput.value = "";
+            };
+            view.displayTodos()
+        }
+
+        addBtn.addEventListener('click', checkEmpty);
+        addInput.addEventListener('keydown', function (e) {
+            if (e.keyCode == 13) {
+                checkEmpty();
+            }
+        })
+
+
+
     },
-//    editTodo: function () {
-//        let todoPosition = document.querySelector(".todoPosition");
-//        let todotext = document.querySelector(".todoText");
-//        todoList.changeTodo(todoPosition.valueAsNumber, todotext.value)
-//        todoPosition.value = "";
-//        todotext.value = "";
-//        view.displayTodos();
-//
-//    },
+    //    editTodo: function () {
+    //        let todoPosition = document.querySelector(".todoPosition");
+    //        let todotext = document.querySelector(".todoText");
+    //        todoList.changeTodo(todoPosition.valueAsNumber, todotext.value)
+    //        todoPosition.value = "";
+    //        todotext.value = "";
+    //        view.displayTodos();
+    //
+    //    },
     removeTodo: function (position) {
         todoList.removeTodo(position);
         view.displayTodos();
     },
-//    toggleCompleted: function () {
-//        let togglePosition = document.querySelector(".togglePosition");
-//        todoList.toggleCompleted(togglePosition.valueAsNumber);
-//        view.displayTodos();
-//    }
+    //    toggleCompleted: function () {
+    //        let togglePosition = document.querySelector(".togglePosition");
+    //        todoList.toggleCompleted(togglePosition.valueAsNumber);
+    //        view.displayTodos();
+    //    }
 }
 
 let view = {
@@ -97,7 +111,7 @@ let view = {
     },
     createRemoveBtn: function () {
         let deleteBtn = document.createElement("button");
-        deleteBtn.textContent = "Remove";
+        deleteBtn.textContent = "✖";
         deleteBtn.className = 'deleteBtn';
         return deleteBtn;
     },
@@ -116,36 +130,40 @@ let view = {
     },
     createChangeButton: function () {
         let changeBtn = document.createElement("button");
-        changeBtn.textContent = "Edit";
+        changeBtn.textContent = "✎";
         changeBtn.className = "editBtn";
         return changeBtn;
     },
-    createEditInput:function(){
+    createEditInput: function () {
         let editInput = document.createElement('input');
         editInput.className = "editInput";
+        editInput.value = "edit todo";
+        editInput.addEventListener('focus',function(){
+            this.value = '';
+        })
         return editInput;
     },
-    editListener:function(){
+    editListener: function () {
         let list = document.querySelector("ul");
-        list.addEventListener('click',function(event){
-           let clickedElement = event.target;
-           if(clickedElement.className === 'editBtn'){
-               todoList.changeTodo(clickedElement.parentElement.id, clickedElement.nextElementSibling.value);
-               view.displayTodos();
-           }
+        list.addEventListener('click', function (event) {
+            let clickedElement = event.target;
+            if (clickedElement.className === 'editBtn') {
+             todoList.changeTodo(clickedElement.parentElement.id, clickedElement.nextElementSibling.value);
+                view.displayTodos();
+            }
         })
     },
-    createCompletedBtn:function(){
+    createCompletedBtn: function () {
         let completedUncompleted = document.createElement('button');
-        completedUncompleted.textContent = "Completed/Uncompleted";
+        completedUncompleted.textContent = "☑|☒";
         completedUncompleted.className = 'completedUncompleted';
         return completedUncompleted;
     },
-    completeListener:function(){
+    completeListener: function () {
         let list = document.querySelector("ul");
-        list.addEventListener('click',function(event){
+        list.addEventListener('click', function (event) {
             let clickedElement = event.target;
-            if(clickedElement.className === 'completedUncompleted'){
+            if (clickedElement.className === 'completedUncompleted') {
                 todoList.toggleCompleted(clickedElement.parentElement.id);
                 view.displayTodos();
             }
@@ -157,6 +175,9 @@ view.removeListenerSetUp();
 view.createChangeButton();
 view.editListener();
 view.completeListener();
+handlers.addTodo();
+
+
 
 
 

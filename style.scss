@@ -41,12 +41,14 @@ input {
     border: none;
     padding: 10px;
     margin: 5px 10px 5px 10px;
-     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 .addInput{
     width: 80%;
     padding: 20px;
+    font-size: 30px;
+    color:rgba(157, 157, 157, 0.85)
 }
 
 li{
@@ -57,11 +59,13 @@ li{
     align-items: center;
 }
 .deleteBtn{
-    color:#fd6d6d
+    color:#fd6d6d;
+    font-size: 20px;
 }
 
 .addTodo{
     color:rgba(37, 106, 37, 0.84);
+    font-size: 20px;
 }
 
 .line{
@@ -78,4 +82,15 @@ li{
     p{
         white-space: pre-line;
     }
+}
+.completedUncompleted{
+    font-size: 20px;
+}
+
+.editBtn{
+    font-size: 20px;
+}
+
+.editInput{
+    color:rgba(157, 157, 157, 0.85)
 }
