@@ -8,18 +8,15 @@
 </head>
 
 <body>
-    <div>
+   <div class="container">
+       <div class="listBox">
         <h1>Todo List</h1>
         <div>
             <button onclick="handlers.toggleAll()">Toggle Todos</button>
         </div>
         <div>
-            <button onclick="handlers.addTodo()">Add ToDo</button>
+            <button onclick="handlers.addTodo()" class="addTodo">Add todo</button>
             <input type="text" class="addInput">
-        </div>
-        <div>
-            <button onclick="handlers.toggleCompleted()">Complete/Uncomplete</button>
-            <input type="number" class="togglePosition">
         </div>
         <div>
             <ul>
@@ -27,10 +24,13 @@
             </ul>
         </div>
     </div>
+   </div>
+    
 
 
 
     <script src="script.js"></script>
+    <script src="https://use.fontawesome.com/4af14fa7c8.js"></script>
 </body>
 
 </html>

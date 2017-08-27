@@ -65,11 +65,6 @@ let handlers = {
         todoList.removeTodo(position);
         view.displayTodos();
     },
-    toggleCompleted: function () {
-        let togglePosition = document.querySelector(".togglePosition");
-        todoList.toggleCompleted(togglePosition.valueAsNumber);
-        view.displayTodos();
-    }
 }
 
 let view = {
