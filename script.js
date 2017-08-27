@@ -65,6 +65,11 @@ let handlers = {
         todoList.removeTodo(position);
         view.displayTodos();
     },
+//    toggleCompleted: function () {
+//        let togglePosition = document.querySelector(".togglePosition");
+//        todoList.toggleCompleted(togglePosition.valueAsNumber);
+//        view.displayTodos();
+//    }
 }
 
 let view = {
@@ -76,10 +81,10 @@ let view = {
         todoList.todos.forEach(function (todo, counter) {
             let listItems = document.createElement('li');
             if (todo.completed == true) {
-                listItems.textContent = todo.todoText + " (x)";
+                listItems.innerHTML = `<div class="line todoItem">${todo.todoText}</div>`;
                 list.appendChild(listItems);
             } else {
-                listItems.textContent = todo.todoText + " ( )";
+                listItems.innerHTML = `<div>${todo.todoText}</div>`;
                 list.appendChild(listItems);
             }
             listItems.id = counter

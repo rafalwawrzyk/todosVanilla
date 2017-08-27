@@ -2,7 +2,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #ededed
+    background-color: #ededed;
 }
 
 h1{
@@ -13,7 +13,7 @@ h1{
 
 .container{
     width: 1000px;
-    border: 1px solid black;
+    border: 1px solid #d0d0d0;
     margin-top: 50px;
     min-height: 500px;
     background-color: #f7f7f7
@@ -34,6 +34,7 @@ button {
         box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
         cursor: pointer;
     }
+    color:dimgrey;
 }
 
 input {
@@ -54,6 +55,14 @@ li{
     justify-content: center;
     align-items: center;
 }
+.deleteBtn{
+    color:#fd6d6d
+}
 
+.addTodo{
+    color:rgba(37, 106, 37, 0.84);
+}
 
-
+.line{
+    text-decoration: line-through;
+}
