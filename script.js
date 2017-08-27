@@ -81,10 +81,10 @@ let view = {
         todoList.todos.forEach(function (todo, counter) {
             let listItems = document.createElement('li');
             if (todo.completed == true) {
-                listItems.innerHTML = `<div class="line todoItem">${todo.todoText}</div>`;
+                listItems.innerHTML = `<div class="line todoItem"><p>${todo.todoText}</p></div>`;
                 list.appendChild(listItems);
             } else {
-                listItems.innerHTML = `<div>${todo.todoText}</div>`;
+                listItems.innerHTML = `<div class="todoItem"><p>${todo.todoText}</p></div>`;
                 list.appendChild(listItems);
             }
             listItems.id = counter

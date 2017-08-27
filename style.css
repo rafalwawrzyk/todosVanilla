@@ -52,7 +52,8 @@ input {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }
 
 .addInput {
-  width: 80%; }
+  width: 80%;
+  padding: 20px; }
 
 li {
   font-size: 20px;
@@ -78,3 +79,13 @@ li {
 
 .line {
   text-decoration: line-through; }
+
+.todoItem {
+  font-size: 30px;
+  margin-right: 50px;
+  height: auto;
+  color: #6c6c6c;
+  width: 300px;
+  white-space: pre-line; }
+  .todoItem p {
+    white-space: pre-line; }
