@@ -52,15 +52,6 @@ let handlers = {
         };
         view.displayTodos()
     },
-    editTodo: function () {
-        let todoPosition = document.querySelector(".todoPosition");
-        let todotext = document.querySelector(".todoText");
-        todoList.changeTodo(todoPosition.valueAsNumber, todotext.value)
-        todoPosition.value = "";
-        todotext.value = "";
-        view.displayTodos();
-
-    },
     removeTodo: function (position) {
         todoList.removeTodo(position);
         view.displayTodos();
@@ -89,7 +80,10 @@ let view = {
             }
             listItems.id = counter
             listItems.appendChild(this.createRemoveBtn());
-        }, this)
+            listItems.appendChild(this.createChangeButton());
+            listItems.appendChild(this.createEditInput());
+        }, this);
+
     },
     createRemoveBtn: function () {
         let deleteBtn = document.createElement("button");
@@ -109,10 +103,35 @@ let view = {
 
             }
         })
+    },
+    createChangeButton: function () {
+        let changeBtn = document.createElement("button");
+        changeBtn.textContent = "Edit";
+        changeBtn.className = "editBtn";
+        return changeBtn;
+    },
+    createEditInput:function(){
+        let editInput = document.createElement('input');
+        editInput.className = "editInput";
+        return editInput;
+    },
+    editListener:function(){
+        let list = document.querySelector("ul");
+        list.addEventListener('click',function(event){
+           let clickedElement = event.target;
+           if(clickedElement.className === 'editBtn'){
+               todoList.changeTodo(clickedElement.parentElement.id, clickedElement.nextElementSibling.value);
+               view.displayTodos();
+           }
+        })
     }
 }
 
 view.removeListenerSetUp();
+view.createChangeButton();
+view.editListener();
+
+
 
 
 
